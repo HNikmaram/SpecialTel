@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2d2d2d" >
+
+    <EditText
+        android:id="@+id/report_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/report_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="#fff"
+        android:ems="10"
+        android:hint="موضوع گزارش"
+        android:padding="10dp"
+        android:textColor="#2d2d2d"
+        android:textColorHint="#2d2d2d" />
+
+    <EditText
+        android:id="@+id/report_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/report_subject"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#fff"
+        android:ems="10"
+        android:hint="متن گزارش"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:textColor="#2d2d2d"
+        android:textColorHint="#2d2d2d" />
+
+    <Button
+        android:id="@+id/report_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/report_msg"
+        android:layout_alignRight="@+id/report_msg"
+        android:layout_below="@+id/report_msg"
+        android:layout_marginTop="14dp"
+        android:background="#8FBC94"
+        android:text="ارسال"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:src="@drawable/envelope" />
+
+    <EditText
+        android:id="@+id/report_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/report_subject"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="14dp"
+        android:background="#fff"
+        android:ems="10"
+        android:hint="نام شما"
+        android:padding="10dp"
+        android:textColor="#2d2d2d"
+        android:textColorHint="#2d2d2d" />
+
+</RelativeLayout>

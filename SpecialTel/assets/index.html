@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en" manifest="webogram.appcache" ng-csp="" xmlns:ng="http://angularjs.org" id="ng-app">
+<head>
+  <!--[if lte IE 9]>
+  <meta HTTP-EQUIV="REFRESH" content="0; url=badbrowser.html">
+  <![endif]-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>TelegroPlus</title>
+
+  <!-- build:css css/app.css -->
+  <link rel="stylesheet" href="vendor/angular/angular-csp.css"/>
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+  <!-- endbuild -->
+
+  <!-- <link rel="stylesheet" href="css/font.css"/> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet" type="text/css"> -->
+
+
+  <link rel="apple-touch-icon" href="img/iphone_home120.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/iphone_home120.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 320px)" href="img/iphone_startup.png">
+
+  <meta name="apple-mobile-web-app-title" content="Telegram Web">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#497495">
+  <meta name="google" content="notranslate">
+
+  <meta property="og:title" content="TelegroPlus">
+  <meta property="og:site_name" content="TelegroPlus">
+<script>
+this.norepeat = 1;
+</script>
+</head>
+<body>
+  <div class="page_wrap" ng-view></div>
+
+  <div id="notify_sound"></div>
+  
+<div id="changebackground" style="width:0px;height:0px;"></div>
+
+  <script>
+  
+ function appendText(extraStr) {
+    document.getElementById("changebackground").innerHTML = extraStr;
+ }  
+
+  function changebackground(id){
+	if(id == "white"){
+		Android.setbackground("white");
+		document.getElementById("changebackground").innerHTML = '<style>.im_history_messages_peer{background:white;}</style>';
+	}
+	else{
+		Android.setbackground(id);
+		document.getElementById("changebackground").innerHTML = '<style>.im_history_messages_peer{background:url(backgrounds/'+id+'.jpg);}</style>';
+	}
+  }
+  function setactivepw(){
+	var setpw = document.getElementById("SetActivePW");
+	var save = document.getElementById("setpwsave");
+	var cancel = document.getElementById("setpwcancel");
+	var field = document.getElementById("setpwfield");
+	
+	setpw.style.display="none";
+	save.style.display="inline";
+	cancel.style.display="inline";
+	field.style.display="inline";
+ 
+  }
+  
+  function setpwcancel(){
+	var setpw = document.getElementById("SetActivePW");
+	var save = document.getElementById("setpwsave");
+	var cancel = document.getElementById("setpwcancel");
+	var field = document.getElementById("setpwfield");
+	
+	setpw.style.display="inline";
+	save.style.display="none";
+	cancel.style.display="none";
+	field.style.display="none";
+	
+	field.value="";
+  }
+  
+  function setpwsave(){
+	var setpw = document.getElementById("SetActivePW");
+	var save = document.getElementById("setpwsave");
+	var cancel = document.getElementById("setpwcancel");
+	var field = document.getElementById("setpwfield");
+	
+	
+	setpw.style.display="inline";
+	save.style.display="none";
+	cancel.style.display="none";
+	field.style.display="none";
+	
+	Android.setlocalpw(field.value);
+  }
+  
+	
+  function stickers(){
+  
+		var x = document.getElementsByClassName("im_dialog");
+		for(i = 0;i<x.length;i++){
+			
+				x[i].style.display = "none";
+			
+		}
+		
+		document.getElementById("botslist").style.display = "none";
+		document.getElementById("chatslist").style.display = "none";
+		document.getElementById("chanelslist").style.display = "none";
+		document.getElementById("stickerslist").style.display = "block";
+		
+		document.getElementById("users").setAttribute("class","tabs");
+		document.getElementById("groups").setAttribute("class","tabs");
+		document.getElementById("chanels").setAttribute("class","tabs");
+  }
+  
+    function bots(){
+  
+		var x = document.getElementsByClassName("im_dialog");
+		for(i = 0;i<x.length;i++){
+			
+				x[i].style.display = "none";
+			
+		}
+		
+		document.getElementById("botslist").style.display = "block";
+		document.getElementById("chatslist").style.display = "none";
+		document.getElementById("chanelslist").style.display = "none";
+		document.getElementById("stickerslist").style.display = "none";
+		
+		document.getElementById("users").setAttribute("class","tabs");
+		document.getElementById("groups").setAttribute("class","tabs");
+		document.getElementById("chanels").setAttribute("class","tabs");
+  }
+  
+   function chanelslist(){
+  
+		var x = document.getElementsByClassName("im_dialog");
+		for(i = 0;i<x.length;i++){
+			
+				x[i].style.display = "none";
+			
+		}
+		
+		document.getElementById("chanelslist").style.display = "block";
+		document.getElementById("chatslist").style.display = "none";
+		document.getElementById("botslist").style.display = "none";
+		document.getElementById("stickerslist").style.display = "none";
+		
+		document.getElementById("users").setAttribute("class","tabs");
+		document.getElementById("groups").setAttribute("class","tabs");
+		document.getElementById("chanels").setAttribute("class","tabs");
+  }
+  
+
+
+	function users(){
+	
+		Android.runother();
+
+		document.getElementById("chanelslist").style.display = "none";
+		document.getElementById("botslist").style.display = "none";
+		document.getElementById("stickerslist").style.display = "none";
+		document.getElementById("chatslist").style.display = "block";
+		
+		var x = document.getElementsByClassName("im_dialog");
+		for(i = 0;i<x.length;i++){
+			if(x[i].getAttribute("class") != "im_dialog dialog_user"){
+				x[i].style.display = "none";
+			}
+			else{
+				x[i].style.display = "block";
+			}
+		}
+		document.getElementById("users").setAttribute("class","tabsactive");
+		document.getElementById("groups").setAttribute("class","tabs");
+		document.getElementById("chanels").setAttribute("class","tabs");
+		
+		
+		
+	}
+
+	
+	function groups(){
+	
+		document.getElementById("chanelslist").style.display = "none";
+		document.getElementById("botslist").style.display = "none";
+		document.getElementById("stickerslist").style.display = "none";
+		document.getElementById("chatslist").style.display = "block";
+		
+		var x = document.getElementsByClassName("im_dialog");
+		for(i = 0;i<x.length;i++){
+			if(x[i].getAttribute("class") != "im_dialog dialog_group"){
+				x[i].style.display = "none";
+			}
+			else{
+				x[i].style.display = "block";
+			}
+		}
+		document.getElementById("groups").setAttribute("class","tabsactive");
+		document.getElementById("users").setAttribute("class","tabs");
+		document.getElementById("chanels").setAttribute("class","tabs");
+		
+	}
+	function chanels(){
+	
+		document.getElementById("chanelslist").style.display = "none";
+		document.getElementById("botslist").style.display = "none";
+		document.getElementById("stickerslist").style.display = "none";
+		document.getElementById("chatslist").style.display = "block";
+		
+		var x = document.getElementsByClassName("im_dialog");
+		for(i = 0;i<x.length;i++){
+			if(x[i].getAttribute("class") != "im_dialog dialog_chanel"){
+				x[i].style.display = "none";
+			}
+			else{
+				x[i].style.display = "block";
+			}
+		}
+		document.getElementById("chanels").setAttribute("class","tabsactive");
+		document.getElementById("groups").setAttribute("class","tabs");
+		document.getElementById("users").setAttribute("class","tabs");
+		
+	}
+  </script>
+  <!-- build:js js/app.js -->
+  <script type="text/javascript" src="js/lib/polyfill.js"></script>
+  <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="js/lib/config.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
+  <script type="text/javascript" src="vendor/jquery.nanoscroller/nanoscroller.js"></script>
+
+  <script type="text/javascript" src="vendor/angular/angular.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-route.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-animate.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-sanitize.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-touch.js"></script>
+  <script type="text/javascript" src="vendor/ui-bootstrap/ui-bootstrap-custom-tpls-0.12.0.js"></script>
+  <script type="text/javascript" src="vendor/angular-media-player/angular-media-player.js"></script>
+
+  <script type="text/javascript" src="vendor/jsbn/jsbn_combined.js"></script>
+  <script type="text/javascript" src="vendor/cryptoJS/crypto.js"></script>
+  <script type="text/javascript" src="vendor/rusha/rusha.js"></script>
+  <script type="text/javascript" src="vendor/zlib/gunzip.min.js"></script>
+  <script type="text/javascript" src="vendor/closure/long.js"></script>
+  <script type="text/javascript" src="vendor/leemon_bigint/bigint.js"></script>
+  <script type="text/javascript" src="vendor/libwebpjs/libwebp-0.2.0.js"></script>
+
+
+  <script type="text/javascript" src="js/lib/utils.js"></script>
+  <script type="text/javascript" src="js/lib/bin_utils.js"></script>
+  <script type="text/javascript" src="js/lib/tl_utils.js"></script>
+  <script type="text/javascript" src="js/lib/ng_utils.js"></script>
+  <script type="text/javascript" src="js/lib/i18n.js"></script>
+  <script type="text/javascript" src="js/lib/mtproto.js"></script>
+  <script type="text/javascript" src="js/lib/mtproto_wrapper.js"></script>
+
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/services.js"></script>
+  <script type="text/javascript" src="js/controllers.js"></script>
+  <script type="text/javascript" src="js/filters.js"></script>
+  <script type="text/javascript" src="js/messages_manager.js"></script>
+
+  <!--PRODUCTION_ONLY_BEGIN
+    <script type="text/javascript" src="js/templates.js"></script>
+  PRODUCTION_ONLY_END-->
+
+  <script type="text/javascript" src="js/message_composer.js"></script>
+  <script type="text/javascript" src="js/directives.js"></script>
+  <script type="text/javascript" src="js/directives_mobile.js"></script>
+  <!-- endbuild -->
+
+</body>
+</html>

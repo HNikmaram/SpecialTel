@@ -1,0 +1,508 @@
+<div my-head></div>
+
+		
+<div class="im_page_wrap" ng-class="{im_page_peer_not_selected: !curDialog.peer}">
+
+
+  <div class="im_page_split clearfix">
+    <div ng-controller="AppImDialogsController" my-dialogs class="im_dialogs_col_wrap" ng-class="search.query.length > 0 ? 'im_dialogs_col_search' : ''">
+      <div class="im_dialogs_panel">
+        <div class="im_dialogs_search">
+          <input class="form-control im_dialogs_search_field no_outline" type="search" placeholder="{{'modal_search' | i18n}}" ng-model="search.query" autocomplete="off" />
+          <a class="im_dialogs_search_clear tg_search_clear" ng-click="searchClear()" ng-show="search.query.length">
+            <i class="icon icon-search-clear"></i>
+          </a>
+        </div>
+      </div>
+	  
+	
+      <div my-dialogs-list-mobile class="im_dialogs_col im_dialogs_scrollable_wrap mobile_scrollable_wrap">
+	<div style="position:fixed;bottom:30px;right:30px;font-size:30px;background:#519D9E;color:white;padding:20px;border-radius:50%;cursor:pointer;z-index:999;" class="newchat_plus" ng-click="openContacts()">+</div>
+	  
+	<div class="categorysbutton">
+		<button id="users" class="tabs" onclick="users();">کاربران</button>
+		<button id="groups" class="tabs" onclick="groups();">گروه ها</button>
+		<button id="chanels" class="tabs" onclick="chanels();">کانال های شما</button>
+	
+	</div>
+	
+	<div class="inner" id="chanelslist" style="display:none;">
+				<ul class="menu">
+					<li><a href="index.html#/im?p=@aks24">کانال فارسی تصاویر</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@joookha">کانال فارسی دهکده</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@shoojoolat">کانال فارسی شوجولات</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@azhamechizchannel">کانال فارسی از همه چیز</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@gizmiztel">کانال فارسی گیزمیز</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@serfan_jahate_ettela">کانال فارسی صرفا جهت اطلاع</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@Khabar_Fouri">کانال فارسی خبر های فوری و مهم</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@khabaronline_ir">کانال فارسی خبر آنلاین</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@shahrekhabar">کانال فارسی شهر خبر</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@parsonline">کانال فارسی پارس آنلاین</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@digikala">کانال فارسی دیجی کالا</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@Aparat_Channel">کانال فارسی آپارات</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@mcinews">کانال فارسی اخبار همراه اول</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@www_mci_ir">کانال فارسی همراه اول</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@irancell">کانال فارسی ایرانسل</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@fararunews">کانال فارسی فرارو</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@MyAsriran">کانال فارسی عصر ایران</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@akairan_com">کانال فارسی عصر ایران</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@isna94">کانال فارسی ایسنا</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@entekhab_ir">کانال فارسی انتخاب</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@TasnimNewschanel">کانال فارسی تسنیم نیوز</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@mehragency">کانال فارسی مهر</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@hamshahrinews">کانال فارسی همشهری آنلاین</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@asrekhodro">کانال فارسی عصر خودرو</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@salamatnews01">کانال فارسی سلامت نیوز</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@yjcnewschannel">کانال فارسی خبرنگاران جوان</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@myitiran">کانال فارسی فناوری اطلاعات ایران</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@irannewspaper">کانال فارسی روزنامه ایران</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@den_ir">کانال فارسی دنیای اقتصاد</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@ictministry">کانال فارسی وزارت ارتباطات</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@etelaresanikeshavarzi">کانال فارسی جهاد کشاورزی</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@Rah141">کانال فارسی وضعیت راه های کشور</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@imam_hossein">کانال فارسی امام حسین (ع)</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@emamkhomeinee">کانال فارسی امام خمینی</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					<li><a href="index.html#/im?p=@khamenei_ir">کانال فارسی خامنه ای</a><span class="icon thumb" style="background:url(icons/chanels.png);"></span></li>
+					
+				</ul>
+				<br>
+				
+		</div>
+		
+		
+		
+		<div id="botslist" style="display:none;" class="inner">
+				<ul class="menu">
+					<li>
+						<a href="index.html#/im?p=@Cheghadr">روبات فارسی چقدر</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Toucibot">روبات فارسی توکان</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Aperture">روبات فارسی روزنه</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@varzesh">روبات فارسی ورزش</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Cafechii">روبات فارسی کافه چی</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Hibourse">روبات فارسی های بورس</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Farsijoke">روبات فارسی فارسی جوک</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@EcoCenterBot">روبات فارسی مرکز خبری اقتصاد ایران</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Charsoogh">روبات فارسی چهار سوق</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@NovlerBot">روبات فارسی ناولر</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@EmadBot">روبات فارسی عماد خان</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@VajehyabBot">روبات فارسی واژه یاب</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Otaghe8Bot">روبات فارسی اتاق 8</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Lurak">روبات فارسی لورک</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Hadith_robot">روبات فارسی حدیث روزانه</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@RamonaBot">روبات فارسی رامونا</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@FaleHafezBot">روبات فارسی فال حافظ</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@IRtranslateBot">روبات فارسی مترجم متن</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@instagetBot">روبات فارسی اینستاگیر</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@ImobileBot">روبات فارسی ایران موبایل</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@NadpcoBot">روبات فارسی بازار سرمایه</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@TinaBot">روبات فارسی تینا</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@ChamedoonBot">روبات فارسی چمدون</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@MahBot">روبات فارسی ماه</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Colors_Bot">روبات فارسی بازی رنگ ها</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@IrphoneBot">روبات فارسی اطلاعات 118</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@RadioPadideBot">روبات فارسی رادیو پدیده</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@PedalBot">روبات فارسی پدال</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@PouyanBot">روبات فارسی فوتبال</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@KhabarfBot">روبات فارسی خبر فوری</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@JokoBot">روبات فارسی جوک</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@IQuranBot">روبات فارسی قرآن</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@English_dailyBot">روبات فارسی آموزش انگلیسی</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@PersianquoteBot">روبات فارسی جملات بزرگان</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@NFBot">روبات فارسی نیوز فایندر</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@NahjolbalaghehBot">روبات فارسی نهج البلاغه</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Voroujak_Bot">روبات فارسی وروجک</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@VaazheBot">روبات فارسی واژه</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@Mosbat_andishan_Bot">روبات فارسی مثبت اندیشان</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@French_dailybot">روبات فارسی یادگیری فرانسه</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@tebbe_sonnati_bot">روبات فارسی طب سنتی</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@andromeda_bot">روبات فارسی خبرخوان</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@imdb1bot">روبات فارسی آی ام دی بی</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@CartoonBot">روبات فارسی کاریکاتور</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@ShahvarBot">روبات فارسی شاهوار</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@tebirani_bot">روبات فارسی طب ایرانی</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@miladi2shamsibot">روبات فارسی میلادی به شمسی</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+					<li>
+						<a href="index.html#/im?p=@zekrbot">روبات فارسی ذکر</a>
+						<span class="icon thumb" style="background:url(icons/robo.png);"></span>
+					</li>
+				
+				</ul>
+				<br>
+				
+		</div>
+		
+		
+		<div id="stickerslist" style="display:none;" class="inner">
+				<ul class="menu">
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=RamezanNajm">استیکر رمضان</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Iranvolleyball">استیکر والیبالی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=khaterat">استیکر قدیمی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=steghlal">استیکر استقلال</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=fcperspolis">استیکر پرسپولیس</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=komshu">استیکر ترکی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Qonkurd">استیکر کردی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Arakiii">استیکر اراکی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=GilMeow">استیکر گیلکی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=sabzevar">استیکر سبزواری</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Kermoon">استیکر کرمانی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=khanbaba">استیکر قزوینی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Animals">استیکر حیوانات</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Flags">استیکر پرچم ها</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=CuttheRope">استیکر Cut The Rope</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=imartem">استیکر مارتین</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=ralph">استیکر خرسی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Weather">استیکر آب و هوا</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=pokemon">استیکر پوکیمون</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=tastyteam">استیکر خوردنی های زنده</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=glory3">استیکر گلوری</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=ClashOfClans">استیکر کلش آف کلنز</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=persik">استیکر گربه همه کار</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Chucklefish">استیکر ChuckleFish</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=facebook">استیکر فیسبوک</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=BruceLeeStickers">استیکر بروس لی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=starlui">استیکر ستاره دریایی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=facebookhatch">استیکر Facebook Hatch</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Windows10">استیکر ویندوز 10</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=garfield">استیکر گارفیلد</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=RageMemes">استیکر ترول 1</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=RageMemes2">استیکر ترول 2</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=MinionsPack">استیکر مینیون ها</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=LEGOMinifigures">استیکر لگو</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Shrek_mvito">استیکر شرک</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=LineFriends">استیکر لاین 1</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=LINE_Stitch">استیکر لاین 2</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=LINE_Usavich">استیکر لاین 3</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=mikuline2">استیکر لاین 4</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=LINE_Doraemon_2">استیکر لاین 5</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=pidgeons">استیکر کبوتر ها</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=penguin">استیکر پنگوئن ها</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=AnimeReactions">استیکر انیمه</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=emoji">استیکر شکلک ها</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Yoyomonkey">استیکر میمون بازیگوش</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=BobEsponja2">استیکر باب اسفنجی</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=prankota">استیکر Prankota</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Emoji_V1_1">استیکر اعضای صورت</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					<li><a href="index.html#/im?tgaddr=tg://addstickers?set=Baach">استیکر گوسفند</a><span class="icon thumb" style="background:url(icons/sticker.png);"></span></li>
+					
+				</ul>
+			<br>	
+		</div>
+		
+		
+        <div class="im_dialogs_empty_wrap" ng-if="isEmpty.contacts" my-vertical-position="0.4">
+          <h3 class="im_dialogs_empty_header" my-i18n="im_no_contacts"></h3>
+          <p class="im_dialogs_empty_lead" my-i18n="im_get_started_long"></p>
+          <button type="button" class="btn btn-primary btn-block im_dialogs_add_contact" ng-click="importContact()" my-i18n="im_add_contact"></button>
+          <button ng-if="phonebookAvailable" type="button" class="btn btn-primary btn-block im_dialogs_import_phonebook" ng-click="importPhonebook()" my-i18n="im_import_phonebook"></button>
+        </div>
+
+        <ul class="nav nav-pills nav-stacked" id="chatslist" >
+          <li class="im_dialog_wrap" my-dialog dialog-message="dialogMessage" ng-repeat="dialogMessage in dialogs track by dialogMessage.peerID" ng-class="{active: curDialog.peerID == dialogMessage.peerID}"></li>
+        </ul>
+
+        <div class="im_dialogs_contacts_wrap" ng-show="contacts.length > 0">
+          <h5 my-i18n="im_contacts_title"></h5>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="im_dialog_wrap" ng-repeat="contact in contacts | orderBy:'user.sortName' track by contact.userID" ng-class="{active: curDialog.peerID == contact.userID}">
+              <a class="im_dialog" ng-mousedown="dialogSelect(contact.peerString)">
+                <div class="im_dialog_photo pull-left" my-peer-photolink="contact.userID" img-class="im_dialog_photo" watch="true"></div>
+                <div class="im_dialog_message_wrap">
+                  <div class="im_dialog_peer">
+                    <span class="im_dialog_user" my-peer-link="contact.userID"  verified="true"></span>
+                  </div>
+                  <div class="im_dialog_message">
+                    <span class="im_dialog_message_text" my-user-status="::contact.userID"></span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="im_dialogs_contacts_wrap" ng-show="foundPeers.length > 0">
+          <h5 my-i18n="im_found_title"></h5>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="im_dialog_wrap" ng-repeat="foundPeer in foundPeers track by foundPeer.id" ng-class="{active: curDialog.peerID == foundPeer.id}">
+              <a class="im_dialog" ng-mousedown="dialogSelect(foundPeer.peerString)">
+                <div class="im_dialog_photo pull-left" my-peer-photolink="foundPeer.id" img-class="im_dialog_photo" watch="true"></div>
+                <div class="im_dialog_message_wrap">
+                  <div class="im_dialog_peer">
+                    <span class="im_dialog_user" my-peer-link="foundPeer.id"  verified="true"></span>
+                  </div>
+                  <div class="im_dialog_message">
+                    <span class="im_dialog_message_text" ng-bind="::'@' + foundPeer.username"></span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="im_dialogs_messages_wrap" ng-show="foundMessages.length > 0">
+          <h5 my-i18n="im_messages"></h5>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="im_dialog_wrap" my-dialog dialog-message="dialogMessage" ng-repeat="dialogMessage in foundMessages track by dialogMessage.mid" ng-class="{active: curDialog.peerID == dialogMessage.peerID &amp;&amp; curDialog.messageID == dialogMessage.mid}"></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="im_history_col_wrap" ng-controller="AppImHistoryController" ng-class="{im_history_loaded: state.loaded}">
+
+      <div class="im_history_not_selected_wrap im_history_not_selected" my-vertical-position="0.35" padding="true">
+        <my-i18n msgid="im_loading_history"></my-i18n><span my-loading-dots></span>
+      </div>
+
+      <div class="im_history_selected_wrap">
+        <div my-history-mobile class="im_history_col">
+
+          <div class="im_history_wrap im_history_scrollable_wrap mobile_scrollable_wrap">
+
+            <div class="im_history_scrollable">
+                <div class="im_history" ng-class="{im_history_selectable: !historyState.botActions, im_history_select_active: historyState.selectActions}">
+                  <div ng-if="state.empty"  class="im_history_empty" ng-switch="state.mayBeHasMore" my-vertical-position="0.25" padding="true">
+                    <span ng-switch-when="true">
+                      <my-i18n msgid="im_loading_history"></my-i18n><span my-loading-dots></span>
+                    </span>
+                    <span ng-switch-default my-i18n="im_no_messages"></span>
+                  </div>
+
+                  <div class="im_history_messages" ng-class="{im_history_messages_group: historyPeer.id < 0}">
+                    <div class="im_history_messages_peer" ng-show="peerHistory.peerID == historyPeer.id" ng-repeat="peerHistory in peerHistories">
+                      <div class="im_history_message_wrap" my-message ng-repeat="historyMessage in peerHistory.messages"></div>
+                    </div>
+                  </div>
+
+                </div>
+
+            </div>
+
+          </div>
+
+          <div class="im_bottom_panel_wrap">
+
+            <div class="im_edit_panel_wrap clearfix" ng-show="historyState.actions()" ng-switch="historyState.actions()">
+              <div class="im_edit_panel_border"></div>
+
+              <div ng-switch-when="bot">
+                <a ng-show="historyState.botActions == 'param'" class="btn btn-md btn-md-primary im_edit_cancel_link" ng-click="cancelBot()" my-i18n="modal_cancel"></a>
+                <div class="im_edit_start_actions">
+                  <a class="btn btn-primary im_start_btn" ng-click="startBot()" my-i18n="im_start"></a>
+                </div>
+              </div>
+              <div ng-switch-when="channel">
+                <div class="im_edit_start_actions" ng-switch="historyState.channelActions">
+                  <a ng-switch-when="join" class="btn btn-primary im_start_btn" ng-click="joinChannel()" my-i18n="im_channel_join"></a>
+                  <a ng-switch-when="mute" class="btn btn-link im_start_btn" ng-click="togglePeerMuted(true)" my-i18n="im_channel_mute"></a>
+                  <a ng-switch-when="unmute" class="btn btn-link im_start_btn" ng-click="togglePeerMuted(false)" my-i18n="im_channel_unmute"></a>
+                </div>
+              </div>
+              <div ng-switch-when="selected" class="im_edit_selected_actions" my-i18n>
+                <a class="btn btn-primary im_edit_forward_btn" ng-click="selectedForward()" ng-class="{disabled: !selectedCount}" ng-disabled="!selectedCount" my-i18n-format="im_forward"></a><a class="btn btn-primary im_edit_delete_btn" ng-click="selectedDelete()" ng-class="{disabled: !selectedCount}" ng-disabled="!selectedCount" my-i18n-format="im_delete" ng-show="historyState.canDelete"></a>
+                <my-i18n-param name="count"><strong class="im_selected_count" ng-show="selectedCount > 0" ng-bind="selectedCount"></strong></my-i18n-param>
+              </div>
+            </div>
+
+            <div class="im_send_panel_wrap" ng-show="!historyState.actions()">
+
+              <div class="im_send_form_wrap1">
+
+                <div class="im_send_form_wrap clearfix" ng-controller="AppImSendController">
+                  <form my-send-form draft-message="draftMessage" mentions="mentions" commands="commands" class="im_send_form" ng-class="{im_send_form_empty: !draftMessage.text.length, composer_progress_enabled: draftMessage.inlineProgress}">
+
+                    <div class="im_send_reply_wrap" ng-if="draftMessage.replyToMessage != null">
+                      <a class="im_send_reply_cancel" ng-mousedown="draftMessage.replyClear()"><i class="icon icon-reply-bar"></i><i class="icon icon-reply-bar"></i></a>
+                      <a class="im_message_reply_wrap" my-reply-message="draftMessage.replyToMessage" watch="true"></a>
+                    </div>
+
+                    <div class="im_send_reply_wrap im_send_fwds_wrap" ng-if="draftMessage.fwdMessages.length > 0">
+                      <a class="im_send_reply_cancel" ng-mousedown="draftMessage.fwdsClear()"><i class="icon icon-reply-bar"></i><i class="icon icon-reply-bar"></i></a>
+                      <div class="im_message_reply_wrap" my-forwarded-messages="draftMessage.fwdMessages"></div>
+                    </div>
+
+                    <div class="im_send_field_panel">
+                      <div class="im_send_field_wrap" ng-class="historyState.replyKeyboard._ == 'replyKeyboardMarkup' ? 'im_send_field_wrap_2ndbtn' : ''">
+                        <a class="composer_command_btn" ng-show="!historyState.replyKeyboard && commands.list.length > 0 && (!draftMessage.text.length || draftMessage.text[0] == '/')" ng-mousedown="toggleSlash($event)" ng-class="draftMessage.text[0] == '/' ? 'active' : ''"><i class="icon icon-slash"></i></a>
+                        <a class="composer_keyboard_btn" ng-show="historyState.replyKeyboard._ == 'replyKeyboardMarkup'" ng-mousedown="replyKeyboardToggle($event)" ng-class="!historyState.replyKeyboard.pFlags.hidden ? 'active' : ''"><i class="icon icon-keyboard"></i></a>
+
+                        <div class="composer_progress_icon_wrap">
+                          <div class="composer_progress_icon" my-arc-progress width="22" stroke="2.5"></div>
+                        </div>
+
+                        <div class="im_send_dropbox_wrap" my-i18n="im_photos_drop_text"></div>
+                        <textarea ng-model="draftMessage.text" class="form-control im_message_field no_outline" dir="auto" ng-trim="false"></textarea>
+                      </div>
+
+                      <div class="im_attach pull-right">
+                        <input type="file" class="im_attach_input" size="28" multiple="true" title="{{'im_media_attach_title' | i18n}}" />
+                        <i class="icon icon-paperclip"></i>
+                      </div>
+
+                      <a class="composer_emoji_insert_btn pull-right"><i class="icon icon-emoji"></i></a>
+
+                      <button type="submit" class="btn btn-success im_submit"></button>
+                    </div>
+
+
+                    <div class="im_send_keyboard_wrap" ng-if="historyState.replyKeyboard._ == 'replyKeyboardMarkup'" ng-show="!historyState.replyKeyboard.pFlags.hidden">
+                      <div my-reply-markup="historyState.replyKeyboard"></div>
+                    </div>
+
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
